@@ -173,12 +173,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1ae279041927ba94b9764da470ada538, type: 3}
       propertyPath: m_Name
-      value: Idle
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1ae279041927ba94b9764da470ada538, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1610549706}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1ae279041927ba94b9764da470ada538, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1610549705}
   m_SourcePrefab: {fileID: 100100000, guid: 1ae279041927ba94b9764da470ada538, type: 3}
 --- !u!1 &705507993
 GameObject:
@@ -379,7 +385,7 @@ GameObject:
   - component: {fileID: 1127555452}
   - component: {fileID: 1127555451}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -472,6 +478,56 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1610549703 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1ae279041927ba94b9764da470ada538, type: 3}
+  m_PrefabInstance: {fileID: 490014983}
+  m_PrefabAsset: {fileID: 0}
+--- !u!143 &1610549705
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1610549703}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0.9, z: 0}
+--- !u!114 &1610549706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1610549703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ae585fffc9a25146a06293611a33744, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _characterController: {fileID: 1610549705}
+  _edgeLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  _monkeyBarLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
