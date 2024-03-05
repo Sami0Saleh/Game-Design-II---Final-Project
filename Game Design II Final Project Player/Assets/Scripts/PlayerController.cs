@@ -27,12 +27,17 @@ public class PlayerController : MonoBehaviour
     public bool _isJumping = false;
     public bool _isDoubleJumping = false;
     private bool _isDashing = false;
-    private bool _isGrounded = true;
+    public bool _isGrounded = true;
     private bool _isSpinAttack = false;
 
     private bool _isHanging = false;
     private bool _isOnMonkeyBar = false;
 
+    public bool IsJumping
+    {
+        get { return _isJumping; }   // get method
+        set { _isJumping = value; }  // set method
+    }
 
     void Update()
     {
