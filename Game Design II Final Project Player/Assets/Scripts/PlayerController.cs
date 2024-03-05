@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Build;
+
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -24,10 +24,10 @@ public class PlayerController : MonoBehaviour
     private float _edgeDetectionDistance = 20f;
     private float _edgeHangOffset = 0.5f;
 
-    private bool _isJumping = false;
-    private bool _isDoubleJumping = false;
+    public bool _isJumping = false;
+    public bool _isDoubleJumping = false;
     private bool _isDashing = false;
-    private bool _isGrounded = false;
+    private bool _isGrounded = true;
     private bool _isSpinAttack = false;
 
     private bool _isHanging = false;
@@ -39,24 +39,33 @@ public class PlayerController : MonoBehaviour
         _horizontalInput = Input.GetAxis("Horizontal");
         _verticalInput = Input.GetAxis("Vertical");
 
-        if (!_characterController.isGrounded && !_isHanging && !_isOnMonkeyBar)
+        
+        if (!_isGrounded)
         {
             _moveDirection.y -= _gravity * Time.deltaTime;
+            Debug.Log("Not grounded");
         }
         else if (_isHanging)
         {
             HangingEdge();
         }
-        else if (_characterController.isGrounded && Input.GetButtonDown("Jump"))
+        else if (_isGrounded && Input.GetButtonDown("Jump"))
         {
             Jump();
         }
+        
         else
         {
             _moveDirection = new Vector3(_horizontalInput, 0.0f, _verticalInput);
             _moveDirection = transform.TransformDirection(_moveDirection);
             _moveDirection *= _moveSpeed;
             _oldMoveDirection = _moveDirection;
+            _isJumping = false;
+            _isDoubleJumping = false;
+        }
+        if (!_isGrounded && _isJumping && Input.GetButtonDown("Jump"))
+        {
+            DoubleJump();
         }
         _characterController.Move(_moveDirection * Time.deltaTime);
     }
@@ -64,10 +73,16 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
-        _moveDirection.y = _jumpHeight; 
+        _moveDirection.y = _jumpHeight;
+        _isJumping = true;
+        _isGrounded = false;
+        
     }
     private void DoubleJump()
     {
+        _moveDirection.y = _jumpHeight;
+        _isDoubleJumping = true;
+        
 
     }
 
@@ -133,6 +148,10 @@ public class PlayerController : MonoBehaviour
         else if (hit.gameObject.CompareTag("monkeyBar"))
         {
             _isOnMonkeyBar = true;
+        }
+        else if (hit.gameObject.CompareTag("ground"))
+        {
+            _isGrounded = true;
         }
     }
 }
