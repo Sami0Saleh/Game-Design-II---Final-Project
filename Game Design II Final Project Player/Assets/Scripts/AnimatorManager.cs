@@ -12,14 +12,13 @@ public class AnimatorManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButton(0))
+        if (_playerController.IsWalking == true)
         { BeginWalkAnim(); }
-        if (Input.GetMouseButton(1))
+        if (_playerController.IsWalking == false)
         { EndWalkAnim(); }
-
-        if (Input.GetButtonDown("Jump") && _playerController._isGrounded == true)
+        if (Input.GetButtonDown("Jump") && _playerController.IsGrounded == true)
         { BeginJumpAnim(); Debug.Log("Should Jump"); }       
-        else if (_playerController._isGrounded == true)
+        else if (_playerController.IsGrounded == true)
         { EndJumpAnim(); }
        
         

@@ -24,19 +24,30 @@ public class PlayerController : MonoBehaviour
     private float _edgeDetectionDistance = 20f;
     private float _edgeHangOffset = 0.5f;
 
-    public bool _isJumping = false;
+    private bool _isWalking;
+    private bool _isJumping = false;
     public bool _isDoubleJumping = false;
     private bool _isDashing = false;
-    public bool _isGrounded = true;
+    private bool _isGrounded = true;
     private bool _isSpinAttack = false;
 
     private bool _isHanging = false;
     private bool _isOnMonkeyBar = false;
 
+    public bool IsWalking
+    {
+        get { return _isWalking; }
+        set { _isWalking = value; }
+    }
     public bool IsJumping
     {
-        get { return _isJumping; }   // get method
-        set { _isJumping = value; }  // set method
+        get { return _isJumping; }
+        set { _isJumping = value; } 
+    }
+    public bool IsGrounded
+    {
+        get { return _isGrounded; }
+        set { _isGrounded = value; }
     }
 
     void Update()
@@ -52,16 +63,20 @@ public class PlayerController : MonoBehaviour
         }
         else if (_isHanging)
         {
+            _isWalking = false;
             HangingEdge();
         }
         else if (_isGrounded && Input.GetButtonDown("Jump"))
         {
+            _isWalking = false;
             Jump();
         }
-        
         else
         {
+            
             _moveDirection = new Vector3(_horizontalInput, 0.0f, _verticalInput);
+            if (_moveDirection == Vector3.zero) { _isWalking = false; }
+            else { _isWalking = true; }
             _moveDirection = transform.TransformDirection(_moveDirection);
             _moveDirection *= _moveSpeed;
             _oldMoveDirection = _moveDirection;
@@ -70,6 +85,7 @@ public class PlayerController : MonoBehaviour
         }
         if (!_isGrounded && _isJumping && Input.GetButtonDown("Jump"))
         {
+            _isWalking = false ;
             DoubleJump();
         }
         _characterController.Move(_moveDirection * Time.deltaTime);
