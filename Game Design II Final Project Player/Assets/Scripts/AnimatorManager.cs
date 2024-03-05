@@ -12,6 +12,11 @@ public class AnimatorManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetMouseButton(0))
+        { BeginHangIdleAnim(); }
+        if (Input.GetMouseButton(1))
+        { EndHangIdleAnim(); }
+
         if (_playerController.IsWalking == true)
         { BeginWalkAnim(); }
         if (_playerController.IsWalking == false)
@@ -41,5 +46,14 @@ public class AnimatorManager : MonoBehaviour
     private void EndJumpAnim()
     {
         _playerAnimator.SetBool("Jumping", false);
+    }
+
+    private void BeginHangIdleAnim()
+    {
+        _playerAnimator.SetBool("Hanging", true);
+    }
+    private void EndHangIdleAnim()
+    {
+        _playerAnimator.SetBool("Hanging", false);
     }
 }
