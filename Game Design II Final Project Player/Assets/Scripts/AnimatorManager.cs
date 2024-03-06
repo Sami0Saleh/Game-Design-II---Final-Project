@@ -47,7 +47,7 @@ public class AnimatorManager : MonoBehaviour
     {
         _playerAnimator.SetBool("Jumping", false);
     }
-
+    
     private void BeginHangIdleAnim()
     {
         _playerAnimator.SetBool("Hanging", true);

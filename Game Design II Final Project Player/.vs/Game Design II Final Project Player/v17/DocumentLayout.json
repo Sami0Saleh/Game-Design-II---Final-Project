@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\ratch\\OneDrive\\Desktop\\Game Design Final Git\\Game-Design-II---Final-Project\\Game Design II Final Project Player\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F7E96C0C-9DF7-DD56-828C-2DE718453D6D}|Assembly-CSharp.csproj|C:\\Users\\ratch\\OneDrive\\Desktop\\Game Design Final Git\\Game-Design-II---Final-Project\\Game Design II Final Project Player\\assets\\scripts\\animatormanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F7E96C0C-9DF7-DD56-828C-2DE718453D6D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\animatormanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F7E96C0C-9DF7-DD56-828C-2DE718453D6D}|Assembly-CSharp.csproj|c:\\users\\ratch\\onedrive\\desktop\\game design final git\\game-design-ii---final-project\\game design ii final project player\\assets\\scripts\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F7E96C0C-9DF7-DD56-828C-2DE718453D6D}|Assembly-CSharp.csproj|C:\\Users\\ratch\\OneDrive\\Desktop\\Game Design Final Git\\Game-Design-II---Final-Project\\Game Design II Final Project Player\\assets\\scripts\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F7E96C0C-9DF7-DD56-828C-2DE718453D6D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F7E96C0C-9DF7-DD56-828C-2DE718453D6D}|Assembly-CSharp.csproj|C:\\Users\\ratch\\OneDrive\\Desktop\\Game Design Final Git\\Game-Design-II---Final-Project\\Game Design II Final Project Player\\assets\\scripts\\cameracontroll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F7E96C0C-9DF7-DD56-828C-2DE718453D6D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\cameracontroll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F7E96C0C-9DF7-DD56-828C-2DE718453D6D}|Assembly-CSharp.csproj|c:\\users\\ratch\\onedrive\\desktop\\game design final git\\game-design-ii---final-project\\game design ii final project player\\assets\\scripts\\animatormanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F7E96C0C-9DF7-DD56-828C-2DE718453D6D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\animatormanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,20 +30,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "AnimatorManager.cs",
               "DocumentMoniker": "C:\\Users\\ratch\\OneDrive\\Desktop\\Game Design Final Git\\Game-Design-II---Final-Project\\Game Design II Final Project Player\\Assets\\Scripts\\AnimatorManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\AnimatorManager.cs",
               "ToolTip": "C:\\Users\\ratch\\OneDrive\\Desktop\\Game Design Final Git\\Game-Design-II---Final-Project\\Game Design II Final Project Player\\Assets\\Scripts\\AnimatorManager.cs",
               "RelativeToolTip": "Assets\\Scripts\\AnimatorManager.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAADUAAAAFAAAA",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAAwA4AAAAKAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-05T13:04:27.407Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "CameraControll.cs",
               "DocumentMoniker": "C:\\Users\\ratch\\OneDrive\\Desktop\\Game Design Final Git\\Game-Design-II---Final-Project\\Game Design II Final Project Player\\Assets\\Scripts\\CameraControll.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\CameraControll.cs",
@@ -56,7 +56,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "PlayerController.cs",
               "DocumentMoniker": "C:\\Users\\ratch\\OneDrive\\Desktop\\Game Design Final Git\\Game-Design-II---Final-Project\\Game Design II Final Project Player\\Assets\\Scripts\\PlayerController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerController.cs",
