@@ -59,7 +59,7 @@ AnimatorStateMachine:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Hanging StateMachine
+  m_Name: Hanging MB StateMachine
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -1902307120284334559}
@@ -506,7 +506,7 @@ AnimatorStateMachine:
   m_ChildStateMachines:
   - serializedVersion: 1
     m_StateMachine: {fileID: -5467390699160078688}
-    m_Position: {x: 250, y: -20, z: 0}
+    m_Position: {x: 250, y: -30, z: 0}
   m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
