@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -54,9 +53,8 @@ public class PlayerController : MonoBehaviour
     {
         _horizontalInput = Input.GetAxis("Horizontal");
         _verticalInput = Input.GetAxis("Vertical");
-
         
-        if (!_isGrounded)
+        if (!_isGrounded && !Input.GetButtonDown("Jump"))
         {
             _moveDirection.y -= _gravity * Time.deltaTime;
             Debug.Log("Not grounded");
@@ -71,40 +69,41 @@ public class PlayerController : MonoBehaviour
             _isWalking = false;
             Jump();
         }
+        else if (!_isGrounded && _isJumping && !_isDoubleJumping && Input.GetButtonDown("Jump"))
+        {
+            _isWalking = false;
+            DoubleJump();
+        }
         else
         {
+            PlayerMovement();
             
-            _moveDirection = new Vector3(_horizontalInput, 0.0f, _verticalInput);
-            if (_moveDirection == Vector3.zero) { _isWalking = false; }
-            else { _isWalking = true; }
-            _moveDirection = transform.TransformDirection(_moveDirection);
-            _moveDirection *= _moveSpeed;
-            _oldMoveDirection = _moveDirection;
-            _isJumping = false;
-            _isDoubleJumping = false;
-        }
-        if (!_isGrounded && _isJumping && Input.GetButtonDown("Jump"))
-        {
-            _isWalking = false ;
-            DoubleJump();
         }
         _characterController.Move(_moveDirection * Time.deltaTime);
     }
 
+    private void PlayerMovement()
+    {
+        _moveDirection = new Vector3(_horizontalInput, 0.0f, _verticalInput);
+        if (_moveDirection == Vector3.zero) { _isWalking = false; }
+        else { _isWalking = true; }
+        _moveDirection = transform.TransformDirection(_moveDirection);
+        _moveDirection *= _moveSpeed;
+        _oldMoveDirection = _moveDirection;
+        _isJumping = false;
+        _isDoubleJumping = false;
+    }
 
     private void Jump()
     {
         _moveDirection.y = _jumpHeight;
         _isJumping = true;
         _isGrounded = false;
-        
     }
     private void DoubleJump()
     {
         _moveDirection.y = _jumpHeight;
         _isDoubleJumping = true;
-        
-
     }
 
     private void HangingEdge()
