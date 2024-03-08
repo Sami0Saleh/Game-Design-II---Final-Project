@@ -13,9 +13,9 @@ public class AnimatorManager : MonoBehaviour
     void Update()
     {
         if (Input.GetMouseButton(0))
-        { BeginHangIdleAnim(); }
+        { BeginHangMBIdleAnim(); }
         if (Input.GetMouseButton(1))
-        { EndHangIdleAnim(); }
+        { EndHangMBIdleAnim(); }
 
         if (_playerController.IsWalking == true)
         { BeginWalkAnim(); }
@@ -48,12 +48,12 @@ public class AnimatorManager : MonoBehaviour
         _playerAnimator.SetBool("Jumping", false);
     }
     
-    private void BeginHangIdleAnim()
+    private void BeginHangMBIdleAnim()
     {
-        _playerAnimator.SetBool("Hanging", true);
+        _playerAnimator.SetBool("HangingMB", true);
     }
-    private void EndHangIdleAnim()
+    private void EndHangMBIdleAnim()
     {
-        _playerAnimator.SetBool("Hanging", false);
+        _playerAnimator.SetBool("HangingMB", false);
     }
 }

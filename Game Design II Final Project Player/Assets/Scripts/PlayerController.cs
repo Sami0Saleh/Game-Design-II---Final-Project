@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour
 {
-
+    
     [SerializeField] CharacterController _characterController;
+
+    [SerializeField] LayerMask _groundLayer;
     [SerializeField] LayerMask _edgeLayer;
     [SerializeField] LayerMask _monkeyBarLayer;
 
@@ -27,7 +30,7 @@ public class PlayerController : MonoBehaviour
     private bool _isJumping = false;
     public bool _isDoubleJumping = false;
     private bool _isDashing = false;
-    private bool _isGrounded = true;
+    public bool _isGrounded = true;
     private bool _isSpinAttack = false;
 
     private bool _isHanging = false;
@@ -53,11 +56,12 @@ public class PlayerController : MonoBehaviour
     {
         _horizontalInput = Input.GetAxis("Horizontal");
         _verticalInput = Input.GetAxis("Vertical");
-        
+        _isGrounded = Physics.CheckSphere(transform.position, 0.01f, _groundLayer);
+
         if (!_isGrounded && !Input.GetButtonDown("Jump"))
         {
             _moveDirection.y -= _gravity * Time.deltaTime;
-            Debug.Log("Not grounded");
+            Debug.Log("Falling");
         }
         else if (_isHanging)
         {
@@ -79,11 +83,13 @@ public class PlayerController : MonoBehaviour
             PlayerMovement();
             
         }
+        
         _characterController.Move(_moveDirection * Time.deltaTime);
     }
 
     private void PlayerMovement()
     {
+        
         _moveDirection = new Vector3(_horizontalInput, 0.0f, _verticalInput);
         if (_moveDirection == Vector3.zero) { _isWalking = false; }
         else { _isWalking = true; }
@@ -160,7 +166,7 @@ public class PlayerController : MonoBehaviour
     }
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-
+        
         if (hit.gameObject.CompareTag("edge"))
         {
             _isHanging = true;
@@ -169,9 +175,6 @@ public class PlayerController : MonoBehaviour
         {
             _isOnMonkeyBar = true;
         }
-        else if (hit.gameObject.CompareTag("ground"))
-        {
-            _isGrounded = true;
-        }
     }
+
 }
