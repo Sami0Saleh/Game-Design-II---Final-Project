@@ -7,24 +7,38 @@ public class AnimatorManager : MonoBehaviour
     [SerializeField] Animator _playerAnimator;
     [SerializeField] CharacterController _characterController;
 
-    [SerializeField] PlayerController _playerController;
+    [SerializeField] PlayerController _PContro;
+
+    private bool _hangingMBStarted = true;
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButton(0))
+      /*  if (Input.GetMouseButton(0))
         { BeginHangMBIdleAnim(); }
         if (Input.GetMouseButton(1))
         { EndHangMBIdleAnim(); }
-
-        if (_playerController.IsWalking == true)
+      */
+        if (_PContro.IsWalking == true)
         { BeginWalkAnim(); }
-        if (_playerController.IsWalking == false)
+        if (_PContro.IsWalking == false)
         { EndWalkAnim(); }
-        if (Input.GetButtonDown("Jump") && _playerController.IsGrounded == true)
+        if (Input.GetButtonDown("Jump") && _PContro.IsGrounded == true)
         { BeginJumpAnim(); Debug.Log("Should Jump"); }       
-        else if (_playerController.IsGrounded == true)
+        else if (_PContro.IsGrounded == true)
         { EndJumpAnim(); }
+
+
+        if (_PContro.IsHangingMB == true)
+        {
+            BeginHangMBIdleAnim();    
+        }
+        else if (_hangingMBStarted == true && _PContro.LeavingMB == true)
+        {
+            EndHangMBIdleAnim();
+        }
+         
+        
        
         
     }
@@ -50,10 +64,12 @@ public class AnimatorManager : MonoBehaviour
     
     private void BeginHangMBIdleAnim()
     {
+        _hangingMBStarted = true;
         _playerAnimator.SetBool("HangingMB", true);
     }
     private void EndHangMBIdleAnim()
     {
+        _hangingMBStarted = false;
         _playerAnimator.SetBool("HangingMB", false);
     }
 }
