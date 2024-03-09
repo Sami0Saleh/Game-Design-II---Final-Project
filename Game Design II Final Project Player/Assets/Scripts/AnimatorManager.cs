@@ -11,14 +11,13 @@ public class AnimatorManager : MonoBehaviour
 
     private bool _hangingMBStarted = true;
 
-    // Update is called once per frame
     void Update()
     {
-      /*  if (Input.GetMouseButton(0))
-        { BeginHangMBIdleAnim(); }
+        if (Input.GetMouseButton(0))
+        { BeginHangEdgeAnim(); }
         if (Input.GetMouseButton(1))
-        { EndHangMBIdleAnim(); }
-      */
+        { EndHangEdgeAnim(); }
+ 
         if (_PContro.IsWalking == true)
         { BeginWalkAnim(); }
         if (_PContro.IsWalking == false)
@@ -71,5 +70,14 @@ public class AnimatorManager : MonoBehaviour
     {
         _hangingMBStarted = false;
         _playerAnimator.SetBool("HangingMB", false);
+    }
+
+    private void BeginHangEdgeAnim()
+    {
+        _playerAnimator.SetBool("HangingEdge", true);
+    }
+    private void EndHangEdgeAnim()
+    {
+        _playerAnimator.SetBool("HangingEdge", false);
     }
 }
