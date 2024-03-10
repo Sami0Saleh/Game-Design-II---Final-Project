@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     
     [SerializeField] CharacterController _characterController;
+    public GameObject PlayerParent;
 
     [SerializeField] LayerMask _groundLayer;
     [SerializeField] LayerMask _edgeLayer;
@@ -198,8 +199,8 @@ public class PlayerController : MonoBehaviour
             Debug.Log(hit.transform.position);
             _isHangingMB = true;
             _isGrounded = false;
-            Vector3 newPos = new Vector3(hit.transform.position.x, hit.transform.position.y - 1f, hit.transform.position.z);
-            transform.position = newPos;
+            Vector3 newPos = new Vector3(hit.gameObject.transform.position.x, hit.gameObject.transform.position.y - 1f, hit.gameObject.transform.position.z);
+            PlayerParent.transform.position = newPos;
         }
     }
 
