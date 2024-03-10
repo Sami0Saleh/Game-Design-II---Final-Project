@@ -174,7 +174,17 @@ public class PlayerController : MonoBehaviour
         _moveDirection.z = transform.forward.z;
         _isHanging = false;
     }
+    private void OnMonkeyBar()
+    {
+        _isGrounded = false;
 
+        if (_leavingMB)
+        { return; }
+       
+        
+        /*Vector3 newPos = new Vector3(hit.transform.position.x, hit.transform.position.y - 1f, hit.transform.position.z);
+        transform.position = newPos;*/
+    }
     private bool CheckIfShouldMove() // checks if the player is hanging on edge or haning on monkey bar and stops him from entering diffrent ifs
     {
         if (_isHanging || _isHangingMB)
@@ -192,14 +202,9 @@ public class PlayerController : MonoBehaviour
         }
         else if (hit.gameObject.CompareTag("monkeyBar"))
         {
-            if (_leavingMB)
-            { return; }
             Debug.Log("Hanging on monkey Bar");
             Debug.Log(hit.transform.position);
             _isHangingMB = true;
-            _isGrounded = false;
-            Vector3 newPos = new Vector3(hit.transform.position.x, hit.transform.position.y - 1f, hit.transform.position.z);
-            transform.position = newPos;
         }
     }
 
