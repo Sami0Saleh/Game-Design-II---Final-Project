@@ -123,6 +123,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &241722859
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 241722860}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &241722860
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 241722859}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.934, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1610549707}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &294134990
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,7 +166,7 @@ GameObject:
   - component: {fileID: 294134993}
   - component: {fileID: 294134992}
   - component: {fileID: 294134991}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Monkey Bar
   m_TagString: monkeyBar
   m_Icon: {fileID: 0}
@@ -222,7 +253,7 @@ Transform:
   m_GameObject: {fileID: 294134990}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.94, y: 5.3, z: -37.779}
+  m_LocalPosition: {x: -7.94, y: 3.9, z: -37.779}
   m_LocalScale: {x: 2.63, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -337,6 +368,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1ae279041927ba94b9764da470ada538, type: 3}
       insertIndex: -1
       addedObject: {fileID: 963194228}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1ae279041927ba94b9764da470ada538, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 241722860}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1ae279041927ba94b9764da470ada538, type: 3}
       insertIndex: -1
@@ -1038,7 +1072,8 @@ MonoBehaviour:
     m_Bits: 0
   _monkeyBarLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
+  _gameObject: {fileID: 241722859}
   _isDoubleJumping: 0
   _isGrounded: 1
   _isHangingMB: 0
