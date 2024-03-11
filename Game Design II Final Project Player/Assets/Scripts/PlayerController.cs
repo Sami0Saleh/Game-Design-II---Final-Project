@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     
     [SerializeField] CharacterController _characterController;
+    public GameObject PlayerParent;
 
     [SerializeField] LayerMask _groundLayer;
     [SerializeField] LayerMask _edgeLayer;
@@ -230,6 +231,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Hanging on monkey Bar");
             Debug.Log(hit.transform.position);
             _isHangingMB = true;
+
         }
     }
 
