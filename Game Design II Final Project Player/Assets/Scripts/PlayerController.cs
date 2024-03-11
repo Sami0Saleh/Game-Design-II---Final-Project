@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     
     [SerializeField] CharacterController _characterController;
+    public GameObject PlayerParent;
 
     [SerializeField] LayerMask _groundLayer;
     [SerializeField] LayerMask _edgeLayer;
@@ -33,8 +34,9 @@ public class PlayerController : MonoBehaviour
     public bool _isGrounded = true;
     private bool _isSpinAttack = false;
 
+    public bool _isHangingMB = false;
     private bool _isHanging = false;
-    private bool _isOnMonkeyBar = false;
+    public bool _leavingMB = false;
 
     public bool IsWalking
     {
@@ -51,6 +53,16 @@ public class PlayerController : MonoBehaviour
         get { return _isGrounded; }
         set { _isGrounded = value; }
     }
+    public bool IsHangingMB
+    {
+        get { return _isHangingMB; }
+        set { _isHangingMB = value; }
+    }
+    public bool LeavingMB
+    {
+        get { return _leavingMB; }
+        set { _leavingMB = value; }
+    }
 
     void Update()
     {
@@ -58,7 +70,7 @@ public class PlayerController : MonoBehaviour
         _verticalInput = Input.GetAxis("Vertical");
         _isGrounded = Physics.CheckSphere(transform.position, 0.01f, _groundLayer);
 
-        if (!_isGrounded && !Input.GetButtonDown("Jump"))
+        if (!_isGrounded && !Input.GetButtonDown("Jump") && CheckIfShouldMove())
         {
             _moveDirection.y -= _gravity * Time.deltaTime;
             Debug.Log("Falling");
@@ -68,28 +80,32 @@ public class PlayerController : MonoBehaviour
             _isWalking = false;
             HangingEdge();
         }
-        else if (_isGrounded && Input.GetButtonDown("Jump"))
+        else if (_isHangingMB && Input.GetButtonDown("Jump"))
+        {
+                 Debug.Log("let me out");
+                 _leavingMB = true;
+        }
+        else if (_isGrounded && Input.GetButtonDown("Jump") && CheckIfShouldMove())
         {
             _isWalking = false;
             Jump();
         }
-        else if (!_isGrounded && _isJumping && !_isDoubleJumping && Input.GetButtonDown("Jump"))
+        else if (!_isGrounded && _isJumping && !_isDoubleJumping && Input.GetButtonDown("Jump") && CheckIfShouldMove())
         {
             _isWalking = false;
             DoubleJump();
         }
         else
         {
-            PlayerMovement();
-            
+            if (CheckIfShouldMove())
+            { PlayerMovement(); }
         }
-        
-        _characterController.Move(_moveDirection * Time.deltaTime);
+        if (CheckIfShouldMove())
+        { _characterController.Move(_moveDirection * Time.deltaTime); }
     }
 
     private void PlayerMovement()
     {
-        
         _moveDirection = new Vector3(_horizontalInput, 0.0f, _verticalInput);
         if (_moveDirection == Vector3.zero) { _isWalking = false; }
         else { _isWalking = true; }
@@ -160,9 +176,13 @@ public class PlayerController : MonoBehaviour
         _isHanging = false;
     }
 
-    private void OnMonekyBar()
+    private bool CheckIfShouldMove() // checks if the player is hanging on edge or haning on monkey bar and stops him from entering diffrent ifs
     {
-
+        if (_isHanging || _isHangingMB)
+        {
+            return false;
+        }
+        else return true;
     }
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
@@ -173,7 +193,14 @@ public class PlayerController : MonoBehaviour
         }
         else if (hit.gameObject.CompareTag("monkeyBar"))
         {
-            _isOnMonkeyBar = true;
+            if (_leavingMB)
+            { return; }
+            Debug.Log("Hanging on monkey Bar");
+            Debug.Log(hit.transform.position);
+            _isHangingMB = true;
+            _isGrounded = false;
+            Vector3 newPos = new Vector3(hit.gameObject.transform.position.x, hit.gameObject.transform.position.y - 1f, hit.gameObject.transform.position.z);
+            PlayerParent.transform.position = newPos;
         }
     }
 
