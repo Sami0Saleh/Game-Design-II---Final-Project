@@ -86,10 +86,6 @@ public class PlayerController : MonoBehaviour
                  Debug.Log("let me out");
                  _leavingMB = true;
         }
-        else if (_isHangingMB)
-        {
-            OnMonkeyBar();
-        }
         else if (_isGrounded && Input.GetButtonDown("Jump") && CheckIfShouldMove())
         {
             _isWalking = false;
@@ -180,30 +176,12 @@ public class PlayerController : MonoBehaviour
         _moveDirection.z = transform.forward.z;
         _isHanging = false;
     }
-    private void OnMonkeyBar()
+    private void OnMonkeyBar(Transform hit)
     {
         _isGrounded = false;
-        Vector3 currentPos = transform.position;
-        RaycastHit hit;
-        // Perform raycast to detect edges below the character
-        if (Physics.Raycast(transform.position, transform.up, out hit, _edgeDetectionDistance, _monkeyBarLayer))
-        {
-
-            Physics.Raycast(transform.position, transform.up, out hit, _edgeDetectionDistance, _monkeyBarLayer);
-            Debug.Log("Entered RayCast");
-            // Position character at the edge with slight offset
-            _gameObject.transform.SetParent(hit.transform);
-            _gameObject.transform.position = Vector3.zero;
-
-            // Disable movement along y-axis
-            //_moveDirection.y = 0;
-
-            /*// Check for lateral movement input
-            float horizontalInput = Input.GetAxis("Horizontal");
-            float verticalInput = Input.GetAxis("Vertical");
-            Vector3 lateralMovement = new Vector3(horizontalInput, 0, verticalInput).normalized * _edgeMovementSpeed;
-            _characterController.Move(lateralMovement * Time.deltaTime);*/
-        }
+        
+        _gameObject.transform.SetParent(hit.transform);
+        _gameObject.transform.localPosition = Vector3.zero;
 
         if (_leavingMB)
         { return; }
@@ -229,7 +207,7 @@ public class PlayerController : MonoBehaviour
         else if (hit.gameObject.CompareTag("monkeyBar"))
         {
             Debug.Log("Hanging on monkey Bar");
-            Debug.Log(hit.transform.position);
+            OnMonkeyBar(hit.transform);
             _isHangingMB = true;
 
         }
