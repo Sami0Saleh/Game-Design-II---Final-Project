@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] LayerMask _groundLayer;
     [SerializeField] LayerMask _edgeLayer;
     [SerializeField] LayerMask _monkeyBarLayer;
+    [SerializeField] GameObject _gameObject;
 
     private Vector3 _moveDirection = Vector3.zero;
     private Vector3 _oldMoveDirection;
@@ -83,6 +84,10 @@ public class PlayerController : MonoBehaviour
         {
                  Debug.Log("let me out");
                  _leavingMB = true;
+        }
+        else if (_isHangingMB)
+        {
+            OnMonkeyBar();
         }
         else if (_isGrounded && Input.GetButtonDown("Jump") && CheckIfShouldMove())
         {
@@ -177,13 +182,33 @@ public class PlayerController : MonoBehaviour
     private void OnMonkeyBar()
     {
         _isGrounded = false;
+        Vector3 currentPos = transform.position;
+        RaycastHit hit;
+        // Perform raycast to detect edges below the character
+        if (Physics.Raycast(transform.position, transform.up, out hit, _edgeDetectionDistance, _monkeyBarLayer))
+        {
+
+            Physics.Raycast(transform.position, transform.up, out hit, _edgeDetectionDistance, _monkeyBarLayer);
+            Debug.Log("Entered RayCast");
+            // Position character at the edge with slight offset
+            _gameObject.transform.SetParent(hit.transform);
+            _gameObject.transform.position = Vector3.zero;
+
+            // Disable movement along y-axis
+            //_moveDirection.y = 0;
+
+            /*// Check for lateral movement input
+            float horizontalInput = Input.GetAxis("Horizontal");
+            float verticalInput = Input.GetAxis("Vertical");
+            Vector3 lateralMovement = new Vector3(horizontalInput, 0, verticalInput).normalized * _edgeMovementSpeed;
+            _characterController.Move(lateralMovement * Time.deltaTime);*/
+        }
 
         if (_leavingMB)
         { return; }
-       
+
         
-        /*Vector3 newPos = new Vector3(hit.transform.position.x, hit.transform.position.y - 1f, hit.transform.position.z);
-        transform.position = newPos;*/
+        
     }
     private bool CheckIfShouldMove() // checks if the player is hanging on edge or haning on monkey bar and stops him from entering diffrent ifs
     {
