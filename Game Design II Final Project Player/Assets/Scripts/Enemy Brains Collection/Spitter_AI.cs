@@ -6,12 +6,10 @@ using UnityEngine.AI;
 
 public class Spitter_AI : MonoBehaviour // Sort later what needs to be public and what does not, and probbaly rewrite half of the names cuz those aren't professional
 {
-
     public float SpitterHealthPoint;
 
-    public NavMeshAgent SpitterAgent; // That's ME
-
-    public Transform player; // There you are Player
+    [SerializeField] NavMeshAgent SpitterAgent; // That's ME
+    [SerializeField] Transform player; // There you are Player
 
     public LayerMask IsDisGround;
     public LayerMask WhatIsPlayer; // what is ground? What is Player?
@@ -33,17 +31,17 @@ public class Spitter_AI : MonoBehaviour // Sort later what needs to be public an
     public bool PlayerIsInMySight;
     public bool PlayerInAttackRange;
 
-    //
-    public GameObject Spit;
+
+    public GameObject SpitProjectile;
     public float Spit_ForwardForce = 32f;
     public float Spit_UpForce = 8f;
 
-    void Awake()
+  /*  void Awake()
     {
         player = GameObject.Find("Player").transform;   // Need to add What is the Name of the player
         SpitterAgent = GetComponent<NavMeshAgent>();
 
-    }
+    }*/ // relevent if spawning and enemy
 
     private void enemeyState()
     {
@@ -117,7 +115,7 @@ public class Spitter_AI : MonoBehaviour // Sort later what needs to be public an
             ////////////////////////////////////////////////
             // WRITE HERE WHAT KIND OF AN ATTACK IT IS!!!
             // V ATTACK CODE HERE V
-            Rigidbody RB_Spit = Instantiate(Spit, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+            Rigidbody RB_Spit = Instantiate(SpitProjectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
             RB_Spit.AddForce(transform.forward * Spit_ForwardForce, ForceMode.Impulse);
             RB_Spit.AddForce(transform.up * Spit_UpForce, ForceMode.Impulse);
 
