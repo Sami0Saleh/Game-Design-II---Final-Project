@@ -963,7 +963,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerAnimator: {fileID: 1610549708}
   _characterController: {fileID: 1610549705}
-  _playerController: {fileID: 1610549706}
+  _PContro: {fileID: 1610549706}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1389,6 +1389,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characterController: {fileID: 1610549705}
+  PlayerParent: {fileID: 0}
   _groundLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -1400,6 +1401,8 @@ MonoBehaviour:
     m_Bits: 0
   _isDoubleJumping: 0
   _isGrounded: 1
+  _isHangingMB: 0
+  _leavingMB: 0
 --- !u!4 &1610549707 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1ae279041927ba94b9764da470ada538, type: 3}
