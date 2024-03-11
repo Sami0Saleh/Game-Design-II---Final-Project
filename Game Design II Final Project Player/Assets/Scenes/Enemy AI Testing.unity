@@ -834,9 +834,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82d8b0cc387dd7a479b62c222dba4c32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpitterHealthPoint: 10
+  clicked: 0
+  SpitterHealthPoint: 0
   SpitterAgent: {fileID: 905057630}
   player: {fileID: 1610549707}
+  Smoohta: {fileID: 4616946959859175908, guid: 53313480931b00b49b44f697e1add134, type: 3}
   IsDisGround:
     serializedVersion: 2
     m_Bits: 8
@@ -846,13 +848,10 @@ MonoBehaviour:
   GoingTo: {x: 0, y: 0, z: 0}
   GoingToRange: 5
   TimeBetweenAttacks: 0.5
-  SightRange: 10
-  AttackRange: 5
+  SightRange: 20
+  AttackRange: 13
   PlayerIsInMySight: 0
   PlayerInAttackRange: 0
-  SpitProjectile: {fileID: 4616946959859175908, guid: 53313480931b00b49b44f697e1add134, type: 3}
-  Spit_ForwardForce: 32
-  Spit_UpForce: 8
 --- !u!23 &905057633
 MeshRenderer:
   m_ObjectHideFlags: 0

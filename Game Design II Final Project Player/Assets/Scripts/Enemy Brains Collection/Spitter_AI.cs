@@ -6,10 +6,13 @@ using UnityEngine.AI;
 
 public class Spitter_AI : MonoBehaviour // Sort later what needs to be public and what does not, and probbaly rewrite half of the names cuz those aren't professional
 {
-    public float SpitterHealthPoint;
+    public bool clicked = false; // delete
+
+    public int SpitterHealthPoint = 3;
 
     [SerializeField] NavMeshAgent SpitterAgent; // That's ME
     [SerializeField] Transform player; // There you are Player
+    [SerializeField] GameObject Smoohta;
 
     public LayerMask IsDisGround;
     public LayerMask WhatIsPlayer; // what is ground? What is Player?
@@ -31,17 +34,10 @@ public class Spitter_AI : MonoBehaviour // Sort later what needs to be public an
     public bool PlayerIsInMySight;
     public bool PlayerInAttackRange;
 
-
-    public GameObject SpitProjectile;
-    public float Spit_ForwardForce = 32f;
-    public float Spit_UpForce = 8f;
-
-  /*  void Awake()
+    void Update()
     {
-        player = GameObject.Find("Player").transform;   // Need to add What is the Name of the player
-        SpitterAgent = GetComponent<NavMeshAgent>();
-
-    }*/ // relevent if spawning and enemy
+        enemeyState();
+    }
 
     private void enemeyState()
     {
@@ -109,22 +105,17 @@ public class Spitter_AI : MonoBehaviour // Sort later what needs to be public an
         //make sure the enemey does NOT MOVE
         SpitterAgent.SetDestination(transform.position);
         transform.LookAt(player);
-        
+
         if (!AttackAlready)
         {
             ////////////////////////////////////////////////
             // WRITE HERE WHAT KIND OF AN ATTACK IT IS!!!
             // V ATTACK CODE HERE V
-            Rigidbody RB_Spit = Instantiate(SpitProjectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            RB_Spit.AddForce(transform.forward * Spit_ForwardForce, ForceMode.Impulse);
-            RB_Spit.AddForce(transform.up * Spit_UpForce, ForceMode.Impulse);
-
+            Instantiate(Smoohta, transform.position, transform.rotation);
             /////////////////////////////////////////////////
             AttackAlready = true;
             Invoke(nameof(ResetAttack), TimeBetweenAttacks);
-            Destroy(RB_Spit);
         }
-
     }
 
     private void ResetAttack()
@@ -134,7 +125,8 @@ public class Spitter_AI : MonoBehaviour // Sort later what needs to be public an
 
     public void TakeDamage(int damage)
     {
-        SpitterHealthPoint -= damage;
+        Debug.Log(SpitterHealthPoint);
+        SpitterHealthPoint--;
         if (SpitterHealthPoint <= 0)
         {
            Invoke(nameof(DestroySpitter), 0.5f);
@@ -145,7 +137,7 @@ public class Spitter_AI : MonoBehaviour // Sort later what needs to be public an
         Destroy(gameObject);
     }
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmos() // SHOULD BE REMOVED
     {
        Gizmos.color = Color.yellow;
        Gizmos.DrawWireSphere(transform.position, AttackRange);
@@ -153,13 +145,8 @@ public class Spitter_AI : MonoBehaviour // Sort later what needs to be public an
        Gizmos.DrawWireSphere(transform.position, SightRange);
 
     }
-    // Update is called once per frame
-    void Update()
-    {
 
-        enemeyState();
-
-    }
+    
     
 
 
