@@ -1,38 +1,40 @@
-using System.Collections; // useless?
-using System.Collections.Generic; // useless?
-using UnityEngine.UI; // useless?
+using System.Collections;
+using System.Collections.Generic; 
+using UnityEngine.UI; 
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEditor.PackageManager;
 
 public class Spitter_AI : MonoBehaviour // Sort later what needs to be public and what does not, and probbaly rewrite half of the names cuz those aren't professional
 {
-    public bool clicked = false; // delete
+    private int _spitterHealthPoint = 3;
 
-    public int SpitterHealthPoint = 3;
-
-    [SerializeField] NavMeshAgent SpitterAgent; // That's ME
-    [SerializeField] Transform player; // There you are Player
+    [SerializeField] NavMeshAgent SpitterAgent; 
+    [SerializeField] Transform player; 
     [SerializeField] GameObject Smoohta;
 
-    public LayerMask IsDisGround;
-    public LayerMask WhatIsPlayer; // what is ground? What is Player?
+    [SerializeField] GameObject _targetA;
+    [SerializeField] GameObject _targetB;
+
+    [SerializeField] LayerMask _ground;
+    [SerializeField] LayerMask _player; 
 
 
-    // Patroling / Searching/ Wasting my life for noting :'c
-    public Vector3 GoingTo; // where do I go?
-    bool AmGoingThere; // Am I going?
-    public float GoingToRange; // How Far is it where I need to go?
+    public Vector3 _moveTarget; 
+    private bool _goingToTarget = true;
+    public float GoingToRange; // why is this float
+    
+    // should change to a system that moves from 2 points and when player enters leaves them
 
 
-    // Attacking/ Murder/ Death, Destruction, Domination!
     public float TimeBetweenAttacks;
     bool AttackAlready;
 
     //States
     public float SightRange;
     public float AttackRange;
-    public bool PlayerIsInMySight;
-    public bool PlayerInAttackRange;
+    private bool _playerIsInMySight;
+    private bool _playerInAttackRange;
 
     void Update()
     {
@@ -42,20 +44,20 @@ public class Spitter_AI : MonoBehaviour // Sort later what needs to be public an
     private void enemeyState()
     {
         //Check for Sight and Attack Range
-        PlayerIsInMySight = Physics.CheckSphere(transform.position, SightRange, WhatIsPlayer);
-        PlayerInAttackRange = Physics.CheckSphere(transform.position, AttackRange, WhatIsPlayer);
+        _playerIsInMySight = Physics.CheckSphere(transform.position, SightRange, _player);
+        _playerInAttackRange = Physics.CheckSphere(transform.position, AttackRange, _player);
 
-        if (!PlayerIsInMySight && !PlayerInAttackRange)
+        if (!_playerIsInMySight && !_playerInAttackRange)
         {
             Patroling();
         }
 
-        if (PlayerIsInMySight && !PlayerInAttackRange)
+        if (_playerIsInMySight && !_playerInAttackRange)
         {
             ChasePlayer();
         }
 
-        if(PlayerIsInMySight && PlayerInAttackRange)
+        if(_playerIsInMySight && _playerInAttackRange)
         {
             AttackPlayer();
         }
@@ -63,39 +65,40 @@ public class Spitter_AI : MonoBehaviour // Sort later what needs to be public an
 
     private void Patroling()
     {
-        if (!AmGoingThere)
+        if (!_goingToTarget)
         {
-            SearchWhereToGO();
-        }
-        if (AmGoingThere)
-        {
-            SpitterAgent.SetDestination(GoingTo);
-        }
-            
-        Vector3 DistanceToWalkPoint = transform.position - GoingTo;
+            // SearchWhereToGO();
+            // SpitterAgent.SetDestination(); should move from target A to Target B and switch
+            if (_goingToTarget)
+            {
+                SpitterAgent.SetDestination(_moveTarget);
+            }
 
-        //Reached WayPoint
-        if (DistanceToWalkPoint.magnitude <1f) 
-        { 
-            AmGoingThere = false;
-        }
+            Vector3 DistanceToWalkPoint = transform.position - _moveTarget;
 
+            //Reached WayPoint
+            if (DistanceToWalkPoint.magnitude < 1f)
+            {
+                _goingToTarget = false;
+            }
+
+        }
     }
-    private void SearchWhereToGO()
+    private void SearchWhereToGO() // irelevent
     {
         //Generate a Point in Range to go there
         float randomZ = Random.Range(-GoingToRange, GoingToRange);
         float randomx = Random.Range(-GoingToRange, GoingToRange);
 
-        GoingTo = new Vector3 (transform.position.z + randomZ, transform.position.x + randomx);
-        if (Physics.Raycast(GoingTo, -transform.up, 2f, IsDisGround))
+        _moveTarget = new Vector3 (transform.position.z + randomZ, transform.position.x + randomx);
+        if (Physics.Raycast(_moveTarget, -transform.up, 2f, _ground))
         {
-            AmGoingThere = true;
+            _goingToTarget = true;
         }
 
     }    
 
-    private void ChasePlayer()
+    private void ChasePlayer() // great
     {
         SpitterAgent.SetDestination(player.position);
     }
@@ -103,7 +106,7 @@ public class Spitter_AI : MonoBehaviour // Sort later what needs to be public an
     private void AttackPlayer()
     {
         //make sure the enemey does NOT MOVE
-        SpitterAgent.SetDestination(transform.position);
+        SpitterAgent.SetDestination(transform.position); // why shouldnt the enemy move while attacking?
         transform.LookAt(player);
 
         if (!AttackAlready)
@@ -125,9 +128,9 @@ public class Spitter_AI : MonoBehaviour // Sort later what needs to be public an
 
     public void TakeDamage(int damage)
     {
-        Debug.Log(SpitterHealthPoint);
-        SpitterHealthPoint--;
-        if (SpitterHealthPoint <= 0)
+        Debug.Log(_spitterHealthPoint);
+        _spitterHealthPoint--;
+        if (_spitterHealthPoint <= 0)
         {
            Invoke(nameof(DestroySpitter), 0.5f);
         }
@@ -145,9 +148,4 @@ public class Spitter_AI : MonoBehaviour // Sort later what needs to be public an
        Gizmos.DrawWireSphere(transform.position, SightRange);
 
     }
-
-    
-    
-
-
 }

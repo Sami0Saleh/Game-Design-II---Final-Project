@@ -4,22 +4,18 @@ using UnityEngine;
 
 public class Smoohta : MonoBehaviour
 {
-    [SerializeField] Rigidbody RB_Spit;
-    public float Spit_ForwardForce = 20f;
-    public float Spit_UpForce = 8f;
+    [SerializeField] Rigidbody _rbSmoohta;
+    private float _spitForwardForce = 20f;
+    private float _spitUpForce = 8f;
 
     private void Start()
     {
-        RB_Spit.AddForce(transform.forward * Spit_ForwardForce, ForceMode.Impulse);
-        RB_Spit.AddForce(transform.up * Spit_UpForce, ForceMode.Impulse);
-    }
-    void Update()
-    {
-           
+        _rbSmoohta.AddForce(transform.forward * _spitForwardForce, ForceMode.Impulse);
+        _rbSmoohta.AddForce(transform.up * _spitUpForce, ForceMode.Impulse);
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "ground")
+        if (collision.gameObject.tag == "ground") // sami says you can remove the if and destroy in each collision
         {
             Destroy(this.gameObject);
         }    

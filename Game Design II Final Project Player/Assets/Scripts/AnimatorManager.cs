@@ -6,8 +6,8 @@ public class AnimatorManager : MonoBehaviour
 {
     [SerializeField] Animator _playerAnimator;
     [SerializeField] CharacterController _characterController;
-
     [SerializeField] PlayerController _PContro;
+
 
     private bool _hangingMBStarted = true;
 
@@ -18,29 +18,21 @@ public class AnimatorManager : MonoBehaviour
         if (Input.GetMouseButton(1))
         { EndHangEdgeAnim(); }
  
-        if (_PContro.IsWalking == true)
+        if (_PContro.IsWalking)
         { BeginWalkAnim(); }
-        if (_PContro.IsWalking == false)
+        if (_PContro.IsWalking)
         { EndWalkAnim(); }
-        if (Input.GetButtonDown("Jump") && _PContro.IsGrounded == true)
+
+        if (Input.GetButtonDown("Jump") && _PContro.IsGrounded)
         { BeginJumpAnim(); Debug.Log("Should Jump"); }       
-        else if (_PContro.IsGrounded == true)
+        else if (_PContro.IsGrounded)
         { EndJumpAnim(); }
 
-
-        if (_PContro.IsHangingMB == true)
-        {
-            BeginHangMBIdleAnim();    
-        }
-        else if (_hangingMBStarted == true && _PContro.LeavingMB == true)
-        {
-            EndHangMBIdleAnim();
-        }
-         
-        
-       
-        
-    }
+        if (_PContro.IsHangingMB)
+        { BeginHangMBIdleAnim(); }
+        else if (_hangingMBStarted && _PContro.LeavingMB)
+        { EndHangMBIdleAnim(); }
+    } // should convert into lambda
 
     
     private void BeginWalkAnim()
