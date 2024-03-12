@@ -10,6 +10,7 @@ public class AnimatorManager : MonoBehaviour
 
 
     private bool _hangingMBStarted = true;
+    private bool _hangingEdgeStarted = false;
 
     void Update()
     {
@@ -17,6 +18,11 @@ public class AnimatorManager : MonoBehaviour
         { BeginHangEdgeAnim(); }
         if (Input.GetMouseButton(1))
         { EndHangEdgeAnim(); }
+        if (_hangingEdgeStarted && Input.GetKey(KeyCode.D))
+        { BeginHangEdgeMovement(); SetMirrorBool(false); Debug.Log("Should Move Edge right"); }
+        else if (_hangingEdgeStarted && Input.GetKey(KeyCode.A))
+        { BeginHangEdgeMovement(); SetMirrorBool(true); Debug.Log("Should Move Edge right"); }
+        else if (_hangingEdgeStarted) { EndHangEdgeMovement(); }
  
         if (_PContro.IsWalking)
         { BeginWalkAnim(); }
@@ -67,9 +73,26 @@ public class AnimatorManager : MonoBehaviour
     private void BeginHangEdgeAnim()
     {
         _playerAnimator.SetBool("HangingEdge", true);
+        _hangingEdgeStarted = true;
     }
     private void EndHangEdgeAnim()
     {
+        _hangingEdgeStarted = true;
         _playerAnimator.SetBool("HangingEdge", false);
+    }
+    private void BeginHangEdgeMovement()
+    {
+        _hangingEdgeStarted = false;
+        _playerAnimator.SetBool("EdgeMovement", true);
+    }
+    private void EndHangEdgeMovement()
+    {
+        _playerAnimator.SetBool("EdgeMovement", false);
+    }
+
+
+    private void SetMirrorBool(bool boolean)
+    {
+        _playerAnimator.SetBool("Mirror", boolean);  
     }
 }
