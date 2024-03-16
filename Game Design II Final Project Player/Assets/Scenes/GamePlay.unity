@@ -1038,7 +1038,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6536340319787996544, guid: 2207b38d8e5e90b46a48ea054816b05b, type: 3}
       propertyPath: m_Name
-      value: Player
+      value: PlayerHolder
       objectReference: {fileID: 0}
     - target: {fileID: 6536340319787996544, guid: 2207b38d8e5e90b46a48ea054816b05b, type: 3}
       propertyPath: m_Layer
@@ -1048,6 +1048,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 7303404624536448857, guid: 2207b38d8e5e90b46a48ea054816b05b, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 91a2912def6d03f44b5f7f97adb7d5d9, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 8245988431870180665, guid: 2207b38d8e5e90b46a48ea054816b05b, type: 3}
