@@ -146,6 +146,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4daaaef9e7a19245b7759c5353b7090, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RB_Spit: {fileID: 7375124099739452230}
-  Spit_ForwardForce: 32
-  Spit_UpForce: 8
+  _rbSmoohta: {fileID: 7375124099739452230}
