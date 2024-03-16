@@ -16,9 +16,9 @@ public class AnimatorManager : MonoBehaviour
     void Update()
     {
         if (Input.GetMouseButton(0))
-        { TriggerHangEdgeAnim(true); }
+        { TriggerAttack("Spin"); }
         if (Input.GetMouseButton(1))
-        { TriggerHangEdgeAnim(false); }
+        { TriggerAttack("Dash"); }
 
         // move right
         if (!_edgeMovement && Input.GetKeyDown(KeyCode.D))
@@ -130,7 +130,22 @@ public class AnimatorManager : MonoBehaviour
         { _playerAnimator.SetTrigger("DropEdge"); }
     }
     
-
+    private void TriggerAttack(string attackType)
+    {
+        _playerAnimator.SetBool("IsAttacking", true);
+        _playerAnimator.SetTrigger($"{attackType}Attack");
+        Invoke($"Reset{attackType}Trigger", 2);
+    }
+    private void ResetSpinTrigger()
+    {
+        _playerAnimator.ResetTrigger("SpinAttack");
+        _playerAnimator.SetBool("IsAttacking", false);
+    }
+    private void ResetDashTrigger()
+    {
+        _playerAnimator.ResetTrigger("DashAttack");
+        _playerAnimator.SetBool("IsAttacking", false);
+    }
 
     private void SetMirrorBool(bool mirror)
     {
