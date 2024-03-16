@@ -36,34 +36,8 @@ public class PlayerController : MonoBehaviour
     private bool _isSpinAttack = false;
 
     public bool _isHangingMB = false;
-    private bool _isHanging = false;
+    private bool _isHangingEdge = false;
     public bool _leavingMB = false;
-
-    public bool IsWalking
-    {
-        get { return _isWalking; }
-        set { _isWalking = value; }
-    }
-    public bool IsJumping
-    {
-        get { return _isJumping; }
-        set { _isJumping = value; } 
-    }
-    public bool IsGrounded
-    {
-        get { return _isGrounded; }
-        set { _isGrounded = value; }
-    }
-    public bool IsHangingMB
-    {
-        get { return _isHangingMB; }
-        set { _isHangingMB = value; }
-    }
-    public bool LeavingMB
-    {
-        get { return _leavingMB; }
-        set { _leavingMB = value; }
-    }
 
     void Update()
     {
@@ -76,7 +50,7 @@ public class PlayerController : MonoBehaviour
             _moveDirection.y -= _gravity * Time.deltaTime;
             Debug.Log("Falling");
         }
-        else if (_isHanging)
+        else if (_isHangingEdge)
         {
             _isWalking = false;
             HangingEdge();
@@ -156,7 +130,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             // Stop hanging if no edge is detected
-            _isHanging = false;
+            _isHangingEdge = false;
         }
 
         // Check for jump input to vault from edge
@@ -174,7 +148,7 @@ public class PlayerController : MonoBehaviour
         _moveDirection = transform.forward * _jumpHeight;
         _moveDirection.y = _jumpHeight;
         _moveDirection.z = transform.forward.z;
-        _isHanging = false;
+        _isHangingEdge = false;
     }
     private void OnMonkeyBar(Transform hit)
     {
@@ -191,7 +165,7 @@ public class PlayerController : MonoBehaviour
     }
     private bool CheckIfShouldMove() // checks if the player is hanging on edge or haning on monkey bar and stops him from entering diffrent ifs
     {
-        if (_isHanging || _isHangingMB)
+        if (_isHangingEdge || _isHangingMB)
         {
             return false;
         }
@@ -202,7 +176,7 @@ public class PlayerController : MonoBehaviour
         
         if (hit.gameObject.CompareTag("edge"))
         {
-            _isHanging = true;
+            _isHangingEdge = true;
         }
         else if (hit.gameObject.CompareTag("monkeyBar"))
         {
@@ -213,4 +187,34 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public bool IsWalking
+    {
+        get { return _isWalking; }
+        set { _isWalking = value; }
+    }
+    public bool IsJumping
+    {
+        get { return _isJumping; }
+        set { _isJumping = value; }
+    }
+    public bool IsGrounded
+    {
+        get { return _isGrounded; }
+        set { _isGrounded = value; }
+    }
+    public bool IsHangingMB
+    {
+        get { return _isHangingMB; }
+        set { _isHangingMB = value; }
+    }
+    public bool LeavingMB
+    {
+        get { return _leavingMB; }
+        set { _leavingMB = value; }
+    }
+    public bool IsHangingEdge
+    {
+        get { return _isHangingEdge; }
+        set { _isHangingEdge = value; }
+    }
 }

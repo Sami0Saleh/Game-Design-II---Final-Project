@@ -10,66 +10,130 @@ public class AnimatorManager : MonoBehaviour
 
 
     private bool _hangingMBStarted = true;
+    private bool _hangingEdgeStarted = false;
+    private bool _edgeMovement = false;
 
     void Update()
     {
         if (Input.GetMouseButton(0))
-        { BeginHangEdgeAnim(); }
+        { TriggerHangEdgeAnim(true); }
         if (Input.GetMouseButton(1))
-        { EndHangEdgeAnim(); }
- 
+        { TriggerHangEdgeAnim(false); }
+
+        // move right
+        if (!_edgeMovement && Input.GetKeyDown(KeyCode.D))
+        { TriggerHangEdgeMovement(true); }
+        else if (_edgeMovement && Input.GetKeyDown(KeyCode.D))
+        { TriggerHangEdgeMovement(true); SetMirrorBool(false);  }
+        else if (Input.GetKeyUp(KeyCode.D)) { TriggerHangEdgeMovement(false); }
+
+        // move left
+        if (!_edgeMovement && Input.GetKeyDown(KeyCode.A))
+        { TriggerHangEdgeMovement(true); }
+        else if (_edgeMovement && Input.GetKeyDown(KeyCode.A))
+        { TriggerHangEdgeMovement(true); SetMirrorBool(true); }
+        else if (Input.GetKeyUp(KeyCode.A)) { TriggerHangEdgeMovement(false); }
+
+        // leave edge
+        if (_hangingEdgeStarted && Input.GetKey(KeyCode.Space))
+        {
+            LeaveEdge(true);
+        }
+        else if (_hangingEdgeStarted && Input.GetKey(KeyCode.S))
+        {
+            LeaveEdge(false);
+        }
+
         if (_PContro.IsWalking)
-        { BeginWalkAnim(); }
+        { TriggerWalkAnim(true); }
         if (_PContro.IsWalking)
-        { EndWalkAnim(); }
+        { TriggerWalkAnim(false); }
 
         if (Input.GetButtonDown("Jump") && _PContro.IsGrounded)
-        { BeginJumpAnim(); Debug.Log("Should Jump"); }       
+        { TriggerJumpAnim(true); Debug.Log("Should Jump"); }       
         else if (_PContro.IsGrounded)
-        { EndJumpAnim(); }
+        { TriggerJumpAnim(false); }
 
         if (_PContro.IsHangingMB)
-        { BeginHangMBIdleAnim(); }
+        { TriggerHangMBIdleAnim(true); }
         else if (_hangingMBStarted && _PContro.LeavingMB)
-        { EndHangMBIdleAnim(); }
+        { TriggerHangMBIdleAnim(false); }
     } // should convert into lambda
 
     
-    private void BeginWalkAnim()
+    private void TriggerWalkAnim(bool trigger)
     {
-        _playerAnimator.SetBool("Walking", true);
+        if (trigger)
+        { _playerAnimator.SetBool("Walking", true); }
+        else
+            _playerAnimator.SetBool("Walking", false);
     }
-    private void EndWalkAnim() 
+    private void TriggerJumpAnim(bool trigger)
     {
-        _playerAnimator.SetBool("Walking", false);
+        if (trigger)
+        _playerAnimator.SetBool("Jumping", true);
+        else
+        { _playerAnimator.SetBool("Jumping", false); }
     }
 
-    private void BeginJumpAnim()
+    private void TriggerHangMBIdleAnim(bool trigger)
     {
-        _playerAnimator.SetBool("Jumping", true);
+        if (trigger)
+        {
+            _hangingMBStarted = true;
+            _playerAnimator.SetBool("HangingMB", true);
+        }
+        else
+        {
+            _hangingMBStarted = false;
+            _playerAnimator.SetBool("HangingMB", false);
+        }
+       
     }
-    private void EndJumpAnim()
+
+    // Edge Animations
+    private void TriggerHangEdgeAnim(bool trigger)
     {
-        _playerAnimator.SetBool("Jumping", false);
+        if (trigger)
+        {
+            _playerAnimator.SetBool("HangingEdge", true);
+            _hangingEdgeStarted = true;
+        }
+        else
+        {
+            _hangingEdgeStarted = true;
+            _playerAnimator.SetBool("HangingEdge", false);
+        }
+    }
+    private void TriggerHangEdgeMovement(bool trigger)
+    {
+        if (trigger)
+        {
+            _hangingEdgeStarted = false;
+            _edgeMovement = true;
+            _playerAnimator.SetBool("EdgeMovement", true);
+        }
+        else
+        {
+            _hangingEdgeStarted = true;
+            _playerAnimator.SetBool("EdgeMovement", false);
+        }
+    }
+
+    private void LeaveEdge(bool up)
+    {
+        TriggerHangEdgeAnim(false);
+        _hangingEdgeStarted = false;
+        if (up)
+        { _playerAnimator.SetTrigger("ClimbEdge"); }
+        else if (!up)
+        { _playerAnimator.SetTrigger("DropEdge"); }
     }
     
-    private void BeginHangMBIdleAnim()
-    {
-        _hangingMBStarted = true;
-        _playerAnimator.SetBool("HangingMB", true);
-    }
-    private void EndHangMBIdleAnim()
-    {
-        _hangingMBStarted = false;
-        _playerAnimator.SetBool("HangingMB", false);
-    }
 
-    private void BeginHangEdgeAnim()
+
+    private void SetMirrorBool(bool mirror)
     {
-        _playerAnimator.SetBool("HangingEdge", true);
-    }
-    private void EndHangEdgeAnim()
-    {
-        _playerAnimator.SetBool("HangingEdge", false);
+        _playerAnimator.SetBool("Mirror", mirror);  
     }
 }
