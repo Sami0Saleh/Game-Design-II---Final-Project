@@ -65,6 +65,7 @@
     <Compile Include="Assets\Scripts\AnimatorManager.cs" />
     <Compile Include="Assets\Smoohta.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\WindMillTrigger.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
   </ItemGroup>
   <ItemGroup>
