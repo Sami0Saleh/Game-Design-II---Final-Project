@@ -1,0 +1,74 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\ratch\\OneDrive\\Desktop\\Game Design Final Git\\Game-Design-II---Final-Project\\Game Design II Whitebox URP 3D\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F1347B62-CA0B-96FE-272E-AF7ECD823E9F}|Assembly-CSharp-Editor.csproj|c:\\users\\ratch\\onedrive\\desktop\\game design final git\\game-design-ii---final-project\\game design ii whitebox urp 3d\\assets\\imported assets\\sun_temple\\postprocessing\\editor\\propertydrawers\\mindrawer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1347B62-CA0B-96FE-272E-AF7ECD823E9F}|Assembly-CSharp-Editor.csproj|solutionrelative:assets\\imported assets\\sun_temple\\postprocessing\\editor\\propertydrawers\\mindrawer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27757048-B49D-A77C-BA1B-E3106176BA60}|Assembly-CSharp.csproj|c:\\users\\ratch\\onedrive\\desktop\\game design final git\\game-design-ii---final-project\\game design ii whitebox urp 3d\\assets\\imported assets\\sun_temple\\scripts\\disablerenderer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27757048-B49D-A77C-BA1B-E3106176BA60}|Assembly-CSharp.csproj|solutionrelative:assets\\imported assets\\sun_temple\\scripts\\disablerenderer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27757048-B49D-A77C-BA1B-E3106176BA60}|Assembly-CSharp.csproj|C:\\Users\\ratch\\OneDrive\\Desktop\\Game Design Final Git\\Game-Design-II---Final-Project\\Game Design II Whitebox URP 3D\\assets\\imported assets\\sun_temple\\content\\shaders\\vertexblend.shader||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{27757048-B49D-A77C-BA1B-E3106176BA60}|Assembly-CSharp.csproj|solutionrelative:assets\\imported assets\\sun_temple\\content\\shaders\\vertexblend.shader||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MinDrawer.cs",
+              "DocumentMoniker": "C:\\Users\\ratch\\OneDrive\\Desktop\\Game Design Final Git\\Game-Design-II---Final-Project\\Game Design II Whitebox URP 3D\\Assets\\Imported Assets\\Sun_Temple\\PostProcessing\\Editor\\PropertyDrawers\\MinDrawer.cs",
+              "RelativeDocumentMoniker": "Assets\\Imported Assets\\Sun_Temple\\PostProcessing\\Editor\\PropertyDrawers\\MinDrawer.cs",
+              "ToolTip": "C:\\Users\\ratch\\OneDrive\\Desktop\\Game Design Final Git\\Game-Design-II---Final-Project\\Game Design II Whitebox URP 3D\\Assets\\Imported Assets\\Sun_Temple\\PostProcessing\\Editor\\PropertyDrawers\\MinDrawer.cs",
+              "RelativeToolTip": "Assets\\Imported Assets\\Sun_Temple\\PostProcessing\\Editor\\PropertyDrawers\\MinDrawer.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-17T15:58:22.59Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DisableRenderer.cs",
+              "DocumentMoniker": "C:\\Users\\ratch\\OneDrive\\Desktop\\Game Design Final Git\\Game-Design-II---Final-Project\\Game Design II Whitebox URP 3D\\Assets\\Imported Assets\\Sun_Temple\\Scripts\\DisableRenderer.cs",
+              "RelativeDocumentMoniker": "Assets\\Imported Assets\\Sun_Temple\\Scripts\\DisableRenderer.cs",
+              "ToolTip": "C:\\Users\\ratch\\OneDrive\\Desktop\\Game Design Final Git\\Game-Design-II---Final-Project\\Game Design II Whitebox URP 3D\\Assets\\Imported Assets\\Sun_Temple\\Scripts\\DisableRenderer.cs",
+              "RelativeToolTip": "Assets\\Imported Assets\\Sun_Temple\\Scripts\\DisableRenderer.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAqwBAAAAAwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-17T15:19:47.118Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "VertexBlend.shader",
+              "DocumentMoniker": "C:\\Users\\ratch\\OneDrive\\Desktop\\Game Design Final Git\\Game-Design-II---Final-Project\\Game Design II Whitebox URP 3D\\Assets\\Imported Assets\\Sun_Temple\\Content\\Shaders\\VertexBlend.shader",
+              "RelativeDocumentMoniker": "Assets\\Imported Assets\\Sun_Temple\\Content\\Shaders\\VertexBlend.shader",
+              "ToolTip": "C:\\Users\\ratch\\OneDrive\\Desktop\\Game Design Final Git\\Game-Design-II---Final-Project\\Game Design II Whitebox URP 3D\\Assets\\Imported Assets\\Sun_Temple\\Content\\Shaders\\VertexBlend.shader",
+              "RelativeToolTip": "Assets\\Imported Assets\\Sun_Temple\\Content\\Shaders\\VertexBlend.shader",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002777|",
+              "WhenOpened": "2024-03-17T15:08:47.212Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
