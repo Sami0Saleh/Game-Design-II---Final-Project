@@ -10695,15 +10695,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4434392078504076, guid: 95fe2533720aeb743ade98ad01dc2812, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 436.4
+      value: 517.1
       objectReference: {fileID: 0}
     - target: {fileID: 4434392078504076, guid: 95fe2533720aeb743ade98ad01dc2812, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 66.8
+      value: 63.3
       objectReference: {fileID: 0}
     - target: {fileID: 4434392078504076, guid: 95fe2533720aeb743ade98ad01dc2812, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -68
+      value: -76.5
       objectReference: {fileID: 0}
     - target: {fileID: 4434392078504076, guid: 95fe2533720aeb743ade98ad01dc2812, type: 3}
       propertyPath: m_LocalRotation.w
@@ -19274,6 +19274,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1022092270954540324, guid: ee09a48f36264324eae57cf8e7684b00,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 18132eb111295e34086984749a7f5c46, type: 2}
     - target: {fileID: 1963404890285883497, guid: ee09a48f36264324eae57cf8e7684b00,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -26662,31 +26667,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4970389905812276, guid: 6bad3189814631f4eadb33f5b936775b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 432.7
+      value: 490.54
       objectReference: {fileID: 0}
     - target: {fileID: 4970389905812276, guid: 6bad3189814631f4eadb33f5b936775b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 65.96
+      value: 63.33
       objectReference: {fileID: 0}
     - target: {fileID: 4970389905812276, guid: 6bad3189814631f4eadb33f5b936775b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 18.16
+      value: -75.54
       objectReference: {fileID: 0}
     - target: {fileID: 4970389905812276, guid: 6bad3189814631f4eadb33f5b936775b, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 4970389905812276, guid: 6bad3189814631f4eadb33f5b936775b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4970389905812276, guid: 6bad3189814631f4eadb33f5b936775b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 4970389905812276, guid: 6bad3189814631f4eadb33f5b936775b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4970389905812276, guid: 6bad3189814631f4eadb33f5b936775b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -26694,7 +26699,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4970389905812276, guid: 6bad3189814631f4eadb33f5b936775b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 4970389905812276, guid: 6bad3189814631f4eadb33f5b936775b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -26796,6 +26801,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: IslandTrigger1
       objectReference: {fileID: 0}
+    - target: {fileID: 5877017040520300515, guid: 4ea3a343571c1be4280a514454c51c30,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 34.1
+      objectReference: {fileID: 0}
     - target: {fileID: 7365012029423244516, guid: 4ea3a343571c1be4280a514454c51c30,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -26804,7 +26814,7 @@ PrefabInstance:
     - target: {fileID: 7365012029423244516, guid: 4ea3a343571c1be4280a514454c51c30,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.2572651
+      value: 1.31
       objectReference: {fileID: 0}
     - target: {fileID: 7365012029423244516, guid: 4ea3a343571c1be4280a514454c51c30,
         type: 3}
